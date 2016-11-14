@@ -30,9 +30,9 @@ export default {
       }
 	 },
 	 {
-		 path: '/counter',
+		 path: '/force-directed-graph',
 		 getComponent(location, cb) {
-		 	System.import( "../components/Counter").then(loadRoute(cb)).catch(errorLoading);
+		 	System.import( "../components/ForceDirectedGraph").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 },
 	 {
@@ -42,9 +42,9 @@ export default {
 		 }
 	 },
 	 {
-		 path: '/about-signalr',
+		 path: '/basic-shapes',
 		 getComponent(location, cb) {
-		 	System.import( "../components/About").then(loadRoute(cb)).catch(errorLoading);
+		 	System.import( "../components/BasicShapes").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 },
 	 {
@@ -66,9 +66,9 @@ export default {
 		 }
 	 },
 	 {
-		 path: '/dashboard',
+		 path: '/webvr',
 		 getComponent(location, cb) {
-		 	System.import( "../components/Dashboard").then(loadRoute(cb)).catch(errorLoading);
+		 	System.import( "../components/WebVR").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 }
 	]

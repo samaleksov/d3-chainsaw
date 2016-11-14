@@ -19,14 +19,6 @@ import moment from "moment"
 class App extends React.Component {
   goHome = () => {
     this.props.router.push('/');
-    this.onNavigate('/');
-  }
-
-  onNavigate = (target) => {
-
-  }
-  navigate = (target) => {
-
   }
   componentDidMount = () => {
 	}
@@ -34,7 +26,6 @@ class App extends React.Component {
 
   }
   render () {
-
     const currentLocation = this.props.location.pathname;
     const headerAndFooter = (currentLocation.indexOf("slides") !== -1);
 

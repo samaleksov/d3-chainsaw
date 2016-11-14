@@ -17,30 +17,9 @@ class Main  extends React.Component {
 				items: [
 					{
 						id: 1,
-						title: "Social Counter",
-						description: "Send changes to WebAPI that will then notify SignalR",
-						link: {
-							pathname: '/counter',
-							query: { incrementsBy: 1 }
-						}
-					},
-					{
-						id: 2,
-						title: "Social Counter 10",
-						description: "Send changes to WebAPI that will then notify SignalR",
-						link: {
-							pathname: '/counter',
-							query: { incrementsBy: 10 }
-						}
-					},
-					{
-						id: 3,
-						title: "Social Counter 42",
-						description: "Send changes to WebAPI that will then notify SignalR",
-						link: {
-							pathname: '/counter',
-							query: { incrementsBy: 42 }
-						}
+						title: "Force Directed Graph",
+						description: "Using d3.forceSimulation",
+						link: '/force-directed-graph'
 					}
 				]
 			},
@@ -53,10 +32,10 @@ class Main  extends React.Component {
 			},
 			{
 				id: 3,
-				title: "Dashboard",
-				description: "Monitor system resources",
+				title: "WebVR",
+				description: "A-Frame, three.js",
 				color: "neutral-3",
-				link: "/dashboard"
+				link: "/webvr"
 			},
 			{
 				id: 4,
@@ -67,10 +46,10 @@ class Main  extends React.Component {
 			},
 			{
 				id: 5,
-				title: "About",
-				description: "SignalR",
+				title: "Basic Shapes",
+				description: "Let's draw some triangles",
 				color: "grey-1",
-				link: "about-signalr"
+				link: "basic-shapes"
 			},
 			{
 				id: 7,
@@ -160,4 +139,4 @@ class Main  extends React.Component {
 		);
 	}
 }
-export default withRouter(Main);
+export default withRouter(Main)
