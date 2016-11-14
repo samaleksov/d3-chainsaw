@@ -2,10 +2,15 @@ import React from "react"
 import { withRouter } from 'react-router'
 import * as d3 from "d3"
 import forceZ  from "../lib/d3.forceZ"
+import forceSimulation  from "../lib/d3.forceSimulation"
+import GamepadControls from "aframe-gamepad-controls";
 
 if(typeof AFRAME != "undefined"){
   var coordinates = AFRAME.utils.coordinates;
 
+  AFRAME.registerComponent('gamepad-controls', GamepadControls);
+  require('aframe-text-component');
+  require('aframe-bmfont-text-component');
   AFRAME.registerComponent('line', {
     schema: {
       color: { default: '#333' },
@@ -46,53 +51,35 @@ if(typeof AFRAME != "undefined"){
 }
 
 
+
+function * nodeGenerator (amount, valueMin, valueMax) {
+  let id = 0;
+  const randomGen = d3.randomUniform(valueMin, valueMax)
+    while(id < amount)
+      yield { id: id++, value: Math.trunc(randomGen()) }
+}
+
+function * linkGenerator (amount, nodes) {
+  let id = 0;
+  const randomGen = d3.randomUniform(0, nodes)
+    while(id < amount)
+      yield { id: id++, source: Math.trunc(randomGen()), target: Math.trunc(randomGen()) }
+}
+
 class WebVR  extends React.Component {
 
 	componentDidMount () {
-		const data = [	10, 20, 30, 15, 25, 35, 40,
-	          			45, 50, 70, 100, 120, 130,
-	             		12, 18, 22, 29, 33, 44, 59, 200]
+		const data = [ 100, 120, 130, 200 ]
 
-		const nodes = [	{id: 1, value: 100},
-										{id: 2, value: 200 },
-										{id: 3, value: 50 },
-										{id: 4, value: 150 },
-										{id: 5, value: 20 },
-										{id: 6, value: 80 },
-                    {id: 7, value: 100},
-										{id: 8, value: 200 },
-										{id: 9, value: 50 },
-										{id: 10, value: 150 },
-										{id: 11, value: 20 },
-										{id: 12, value: 80 },
-                    {id: 13, value: 100},
-										{id: 14, value: 200 },
-										{id: 15, value: 50 },
-										{id: 16, value: 150 },
-										{id: 17, value: 20 },
-										{id: 18, value: 80 }]
+		const nodes = [	]
+    for(let node of nodeGenerator(10, 1, 200)){
+        nodes.push(node)
+    }
 
-		const links = [	{id: 1, source: 1, target: 2 },
-		 								{id: 2, source: 1, target: 3 },
-										{id: 3, source: 1, target: 4 },
-										{id: 4, source: 1, target: 5 },
-										{id: 5, source: 1, target: 6 },
-										{id: 6, source: 2, target: 3 },
-										{id: 7, source: 2, target: 4 },
-										{id: 8, source: 2, target: 5 },
-										{id: 9, source: 2, target: 6 },
-                    {id: 10, source: 1, target: 7 },
-		 								{id: 11, source: 1, target: 8 },
-										{id: 12, source: 1, target: 9 },
-										{id: 13, source: 1, target: 10 },
-										{id: 14, source: 1, target: 11 },
-                    {id: 15, source: 1, target: 12 },
-		 								{id: 16, source: 1, target: 13 },
-										{id: 17, source: 1, target: 14 },
-										{id: 18, source: 1, target: 15 },
-										{id: 19, source: 1, target: 16 },
-                    {id: 20, source: 1, target: 17 },
-                    {id: 21, source: 1, target: 18 }]
+		const links = [	]
+    for(let link of linkGenerator(10, nodes.length)){
+        links.push(link)
+    }
 
 		const hscale = d3.scaleLinear()
 							    	.domain([0, d3.max(data)])
@@ -104,25 +91,72 @@ class WebVR  extends React.Component {
 											.data(data)
 
 		const nodeSelector = scene.select(".graph")
-											.selectAll("a-sphere.node")
+											.selectAll("a-entity.node")
 											.data(nodes)
 
 		const linkSelector = scene.select(".graph")
 															.selectAll("a-entity.link")
 															.data(links)
 
-		const spheres = nodeSelector.enter()
-												.append("a-sphere")
+    scene.select(".graphContainer")
+      .attr('opacity', 0.5)
+      .on("click", function() {
+        console.log("click")
+      })
+      .on("mouseenter", function() {
+        if(this.hovering) return;
+        this.hovering = true;
+        d3.select(this).transition().duration(1000)
+        .attr("scale", 2)
+      })
+      .on("mouseleave", function() {
+        this.hovering = false;
+        d3.select(this).transition()
+        .attr("scale", 1)
+      })
+
+
+    const nodeEnter = nodeSelector.enter()
+
+		const spheres =   nodeEnter
+												.append("a-entity")
+                          .attr("geometry", "primitive: sphere")
+                          .attr("radius", 2.5)
 													.classed("node", true)
+
+    spheres.append("a-entity")
+          .attr("mixin", "lookAtCamera")
+          .attr("position", "0 0 4")
+          .attr("scale", "4 4 4")
+          .attr("text", (d, i) => `text: ${d.id}` )
+
+    spheres
+      .attr('opacity', 0.5)
+      .on("click", function() {
+        console.log("click")
+      })
+      .on("mouseenter", function() {
+        if(this.hovering) return;
+        this.hovering = true;
+        d3.select(this).transition().duration(1000)
+        .attr("radius", 5)
+      })
+      .on("mouseleave", function() {
+        this.hovering = false;
+        d3.select(this).transition()
+        .attr("radius", 2.5)
+      })
 
 		const lines = linkSelector.enter()
 																.append("a-entity")
 																	.classed("link", true)
 																	.attr("line", "color: #E20049;")
 
-		const simulation = d3.forceSimulation()
+		const simulation = forceSimulation()
 										    .force("link", d3.forceLink().id(function(d) { return d.id }))
-                        .force("z", forceZ())
+                        .force("center", d3.forceCenter())
+                        .force("x", d3.forceX())
+                        .force("y", d3.forceY())
 										    .force("charge", d3.forceManyBody())
 
 		simulation
@@ -160,7 +194,7 @@ class WebVR  extends React.Component {
 					return x + " " + y + " " + z
 		    })
 				.attr('width', 0.5)
-				.attr('depth', 0.9)
+				.attr('depth', 5)
 				.attr('height', (d) => hscale(d))
 				.attr('opacity', (d,i) => 0.6 + (i/data.length) * 0.4)
 		    .on("click", function(d,i) {
@@ -188,8 +222,19 @@ class WebVR  extends React.Component {
 		return (
 			<div style={ styles.container }>
 				<a-scene>
-					<a-entity class="graph" position="0 2 -2" scale="0.02 0.02 0.02"></a-entity>
-					<a-entity camera="userHeight: 1.6" position="0 0 0" look-controls wasd-controls>
+          <a-assets>
+            <a-mixin id="lookAtCamera" look-at="#camera"></a-mixin>
+          </a-assets>
+					<a-entity class="graphContainer" >
+
+
+            <a-entity class="graph" >
+              <a-entity mixin="lookAtCamera" text="text: Hello World" />
+            </a-entity>
+
+          </a-entity>
+          <a-sky src="room_reception.jpg" />
+					<a-entity id="camera" camera="userHeight: 1.6" position="0 0 0" gamepad-controls="flyEnabled: true" look-controls wasd-controls="fly: true">
 						<a-entity position="0 0 -1"
 			                geometry="primitive: ring; radiusOuter: 0.03;
 			                          radiusInner: 0.02;"

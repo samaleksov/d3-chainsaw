@@ -7,16 +7,36 @@ class ForceDirectedGraph  extends React.Component {
 	svgSelection
 	componentDidMount () {
 		const svg = d3.select(this.svgNode)
-		var color = d3.scaleOrdinal(d3.schemeCategory20)
 
-		var simulation = d3.forceSimulation()
+		const width = this.svgNode.clientWidth;
+		const height = this.svgNode.clientHeight;
+
+		const color = d3.scaleOrdinal(d3.schemeCategory20)
+
+		const simulation = d3.forceSimulation()
 										    .force("link", d3.forceLink().id(function(d) { return d.id }))
 										    .force("charge", d3.forceManyBody())
 
+		const group = svg.append("g")
+										.attr("width", "100%")
+										.attr("height", "100%")
+
+		const zoom = d3.zoom()
+	    .scaleExtent([1, Infinity])
+	    .on("zoom", zoomed);
+
+		function zoomed() {
+		  group.attr("transform",d3.event.transform);
+		}
+
+		svg
+			.call(zoom)
+
+		zoom.translateBy(svg, width/2, height/2)
+
 		d3.json("miserables.json", function(error, graph) {
 			if (error) throw error
-
-			var link = svg.append("g")
+			var link = group.append("g")
 									  .attr("class", "links")
 										.selectAll("line")
 										.data(graph.links)
@@ -26,7 +46,7 @@ class ForceDirectedGraph  extends React.Component {
 										  .attr("stroke-opacity", 0.6)
 									  	.attr("stroke-width", function(d) { return Math.sqrt(d.value) })
 
-			var node = svg.append("g")
+			var node = group.append("g")
 									  .attr("class", "nodes")
 										.selectAll("circle")
 										.data(graph.nodes)

@@ -39,7 +39,7 @@ class App extends React.Component {
       <GrommetApp inline={false} centered={!headerAndFooter}>
         <Box primary={true} full={true} pad="small">
           <Header size="large" justify="between" colorIndex="grey-2-a" pad={{"horizontal": "medium", "vertical" : "medium"}}>
-            <a style={{color: "White"}} onClick={this.goHome}><Image src="/techtalks.png" size="small" fit="contain" alt="Tech Talks" /></a>
+            <a style={{color: "White"}} onClick={this.goHome}><Image src="/epam_logo.png" size="small" fit="contain" alt="EPAM Systems" /></a>
           </Header>
           <Box flex="grow">
             {childrenWithProps}

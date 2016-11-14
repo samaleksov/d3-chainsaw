@@ -19,13 +19,15 @@ let app = express();
 
 app.use((req, res, next) => {
   let location = createLocation(req.originalUrl);
+  const css = new Set();
+  const context = { insertCss: (...styles) => styles.forEach(style => css.add(style._getCss())) }
 
   match({routes, location}, (error, redirectLocation, renderProps) => {
     if (redirectLocation) return res.redirect(redirectLocation.pathname);
     if (error) return next(error.message);
     if (renderProps == null) return next(error);
 
-    let markup = renderToString(<RouterContext {...renderProps}/>);
+    let markup = renderToString(<RouterContext { ...renderProps }/>);
 
 		let html = [
       `<!DOCTYPE html>
@@ -39,8 +41,11 @@ app.use((req, res, next) => {
             html, body, #root { height: 100%; } a { text-decoration: none !important; }
             .a-canvas { width: 100% !important;height: 100% }
           </style>
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.css"/>
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/monokai.min.css"/>
+          <style type="text/css">${[...css].join('')}</style>
         </head>
-        <body>
+        <body class="loading">
           <div id="root"><div>${markup}</div></div>
           <script type="text/javascript" src="/aframe.js" charset="utf-8"></script>
 					<script type="text/javascript" src="vendor.bundle.js" charset="utf-8"></script>
@@ -63,4 +68,4 @@ app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static(path.join(__dirname, 'public')));
 let server  = createServer(app);
-server.listen(3333);
+server.listen(8081);

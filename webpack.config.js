@@ -5,7 +5,7 @@ module.exports = {
     entry: {
       app: ["./client.js", 'webpack-hot-middleware/client'],
       vendor: [
-       'react', 'react-dom', 'jquery'
+       'react', 'react-dom'
       ]
     },
     output: {
@@ -18,12 +18,14 @@ module.exports = {
     module: {
         loaders: [
             {
-                loader: ['react-hot','babel-loader'],
+                loader: ['react-hot-loader/webpack','babel-loader'],
                 test: /\.js/,
                 exclude: /(node_modules|bower_components)/
             },
             {
-                test: require.resolve('jquery'), loader: 'expose?jQuery!expose?$'
+                loader: ['babel-loader'],
+                test: /\.example/,
+                exclude: /(node_modules|bower_components)/
             },
             {
                 test: /\.scss$/,
@@ -36,7 +38,6 @@ module.exports = {
               new webpack.optimize.OccurrenceOrderPlugin(),
               new webpack.HotModuleReplacementPlugin(),
               new webpack.NoErrorsPlugin(),
-              new webpack.ProvidePlugin({ $: "jquery" }),
               new webpack.LoaderOptionsPlugin({
                options: {
                  sassLoader: {

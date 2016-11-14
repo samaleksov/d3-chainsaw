@@ -12,6 +12,8 @@ import Pulse from 'grommet/components/icons/Pulse';
 import Image from 'grommet/components/Image';
 import Spinning from 'grommet/components/icons/Spinning';
 
+import Playground from "component-playground";
+
 class Slides  extends React.Component {
 	carousel = null
 	keyDown = (event) => {
@@ -47,34 +49,27 @@ class Slides  extends React.Component {
 		window.document.removeEventListener("keydown", this.keyDown, false);
 	}
 	render () {
+		var basicShapesExample = require("raw-loader!./BasicShapes.example");
+		console.log(basicShapesExample);
 		return (
 			<Box full={true} primary={true}>
 				<Carousel infinite={false} ref={(c) => this.carousel = c} autoplay={false} persistentNav={false} >
-					<Hero colorIndex="ok">
+					<Hero colorIndex="#f2f5f3">
 						<Box>
-							<Image src="/sqlsat538_header.png" size="medium" fit="contain" alt="SQLSaturday" />
+							<Image src="/jstalks-logo.png" size="medium" fit="contain" alt="js.talks();" />
 						</Box>
-						<Box>
-							<Image src="/techtalks.png" size="medium" fit="contain" alt="SQLSaturday" />
-						</Box>
-						<span style={{color: "White"}}>
-							<h1>
+						<span>
+							<h1 style={{color: "#e74e50"}}>
 								Sam Aleksov
 							</h1>
-							<h3>
+							<h3 style={{color: "#00adef"}}>
 								@samaleksov | samuil_aleksov@epam.com
 							</h3>
 						</span>
 					</Hero>
-					<Hero colorIndex="ok">
-						<h1 style={{color: "White"}}>
-							 #sqlsatSofia
-						</h1>
-						<h1 style={{color: "White"}}>
-							 #sqlsat538
-						</h1>
-						<h1 style={{color: "White"}}>
-							 #sqlpass
+					<Hero colorIndex="#f2f3f4">
+						<h1 style={{color: "#e74e50"}}>
+							 #jstalks
 						</h1>
 					</Hero>
 					<Hero backgroundImage="/iStock_000065756809_Large_2.jpg">
@@ -82,13 +77,9 @@ class Slides  extends React.Component {
 							Advanced Data Visualization With D3.js
 						</h1>
 					</Hero>
-					<Hero backgroundImage="/iStock_90898237_web.jpg" colorIndex="neutral-2">
-						<Box size="xsmall">
-							<h1 style={{backgroundColor: "Black", textAlign: "center"}}>
-								Phone!
-							</h1>
-						</Box>
-					</Hero>
+					<div className="component-documentation">
+		        <Playground codeText={basicShapesExample} scope={{React: React }}/>
+		      </div>
 					<Hero backgroundImage="/iStock_000009322434_Full.jpg" colorIndex="neutral-2">
 						<Box size="xsmall">
 							<h1 style={{backgroundColor: "Black", textAlign: "center"}}>
