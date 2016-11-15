@@ -8,19 +8,19 @@ import Down from 'grommet/components/icons/base/Down';
 import Up from 'grommet/components/icons/base/Up';
 
 class StockTickers  extends React.Component {
-	componentWillUnmount = () => {
-	}
-	componentDidMount = () => {
+  componentWillUnmount = () => {
+  }
+  componentDidMount = () => {
 
-	}
-	render () {
-			let counterBody = (<h1>Here be dragons</h1>);
-			return (<div>
-				<Animate keep={true} enter={{"animation": "slide-left", "duration": 2000}} leave={{"animation": "slide-left", "duration": 1000}} visible={true}>
-					<div>{ counterBody }</div>
-				</Animate>
-			</div>);
-	}
+  }
+  render () {
+    let counterBody = (<h1>Here be dragons</h1>);
+    return (<div>
+      <Animate keep={true} enter={{"animation": "slide-left", "duration": 2000}} leave={{"animation": "slide-left", "duration": 1000}} visible={true}>
+        <div>{ counterBody }</div>
+      </Animate>
+    </div>);
+  }
 }
 
 export default withRouter(StockTickers) ;

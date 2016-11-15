@@ -1,35 +1,36 @@
-import express from "express"
-import { createServer } from "http"
-import path from "path"
+import express from 'express';
+import { createServer } from 'http';
+import path from 'path';
 
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-
-const config = require('./webpack.config');
-const compiler = webpack(config);
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import createLocation from 'history/lib/createLocation';
-import {RouterContext, match} from 'react-router';
+import { RouterContext, match } from 'react-router';
 import routes from './routes/routes';
-import { API_URL, SIGNALR_URL } from './constants'
-let app = express();
+
+const config = require('./webpack.config');
+
+const compiler = webpack(config);
+
+
+const app = express();
 
 app.use((req, res, next) => {
-  let location = createLocation(req.originalUrl);
+  const location = createLocation(req.originalUrl);
   const css = new Set();
-  const context = { insertCss: (...styles) => styles.forEach(style => css.add(style._getCss())) }
 
-  match({routes, location}, (error, redirectLocation, renderProps) => {
+  match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) return res.redirect(redirectLocation.pathname);
     if (error) return next(error.message);
     if (renderProps == null) return next(error);
 
-    let markup = renderToString(<RouterContext { ...renderProps }/>);
+    const markup = renderToString(<RouterContext {...renderProps} />);
 
-		let html = [
+    const html = [
       `<!DOCTYPE html>
       <html>
         <head>
@@ -85,24 +86,24 @@ app.use((req, res, next) => {
           <script type="text/javascript" src="/aframe.js" charset="utf-8"></script>
           <script type="text/javascript" src="/babel.js" charset="utf-8"></script>
           <script type="text/javascript" src="/polyfill.js" charset="utf-8"></script>
-					<script type="text/javascript" src="/vendor.bundle.js" charset="utf-8"></script>
-					<script type="text/javascript" src="/app.bundle.js" charset="utf-8"></script>
+          <script type="text/javascript" src="/vendor.bundle.js" charset="utf-8"></script>
+          <script type="text/javascript" src="/app.bundle.js" charset="utf-8"></script>
         </body>
-      </html>`
+      </html>`,
     ].join('');
     res.setHeader('Content-Type', 'text/html');
-    res.send(html);
+    return res.send(html);
   });
 });
 
-app.use(webpackDevMiddleware(compiler,{
+app.use(webpackDevMiddleware(compiler, {
   stats: {
-      colors: true
-  }
+    colors: true,
+  },
 }));
 
 app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static(path.join(__dirname, 'public')));
-let server  = createServer(app);
+const server = createServer(app);
 server.listen(8081);

@@ -21,8 +21,8 @@ class App extends React.Component {
     this.props.router.push('/');
   }
   componentDidMount = () => {
-	}
-	componentWillUnmount = () => {
+  }
+  componentWillUnmount = () => {
 
   }
   render () {
@@ -30,9 +30,9 @@ class App extends React.Component {
     const headerAndFooter = (currentLocation.indexOf("slides") !== -1);
 
     const childrenWithProps = React.Children.map(this.props.children,
-     (child) => React.cloneElement(child, {
-       onNavigate: this.onNavigate
-     })
+      (child) => React.cloneElement(child, {
+        onNavigate: this.onNavigate
+      })
     );
 
     return (
