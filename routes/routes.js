@@ -54,9 +54,9 @@ export default {
 		},
 		 childRoutes: [
 		 		{
-		 			path: '/slides/1',
+		 			path: '/slides/shapes',
 		 			getComponent(location, cb) {
-		        System.import( "../components/Slide1").then(loadRoute(cb)).catch(errorLoading);
+		        System.import( "../components/SlideShapes").then(loadRoute(cb)).catch(errorLoading);
 	       	}
 		 	 	},
 				{
@@ -66,9 +66,33 @@ export default {
 	       	}
 		 	 	},
 				{
+		 			path: '/slides/d3-selection-data-binding',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideBinding").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/the-force',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideForce1").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/next',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideNext").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
 		 			path: '/slides/tweet',
 		 			getComponent(location, cb) {
 		        System.import( "../components/SlideTweet").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/topic',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideTopic").then(loadRoute(cb)).catch(errorLoading);
 	       	}
 		 	 	},
 				{
@@ -80,15 +104,21 @@ export default {
 	 	 ]
 	 },
 	 {
-		 path: '/scalability',
+		 path: '/d3-selection-data-binding',
 		 getComponent(location, cb) {
-		 	System.import( "../components/Scalability").then(loadRoute(cb)).catch(errorLoading);
+		 	System.import( "../components/D3Selection2").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 },
 	 {
 		 path: '/d3-selection',
 		 getComponent(location, cb) {
 		 	System.import( "../components/D3Selection").then(loadRoute(cb)).catch(errorLoading);
+		 }
+	 },
+	 {
+		 path: '/force1',
+		 getComponent(location, cb) {
+		 	System.import( "../components/D3Force1").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 },
 	 {

@@ -13,14 +13,14 @@ import Pulse from 'grommet/components/icons/Pulse';
 import Image from 'grommet/components/Image';
 import Spinning from 'grommet/components/icons/Spinning';
 
-class SlideBinding  extends React.Component {
+class SlideNext  extends React.Component {
 	state = {
 		loaded: false
 	}
   componentDidMount () {
     window.document.addEventListener("keydown", this.keyDown, false);
 		const playground = require("../lib/live-editor")
-		const exampleCode = require("!raw-loader!./D3Selection.js")
+		const exampleCode = require("!raw-loader!./WebVR.js")
 		this.setState({ ...this.state, exampleCode, playground, loaded: true })
  	}
 	componentWillUnmount () {
@@ -28,8 +28,27 @@ class SlideBinding  extends React.Component {
 	}
 	render () {
 
-		// d3.select("#workspace").data(data)
-		// instead of imperative DOM
+		/*
+				const update = (data) => {
+						const p = d3.select("#workspace")
+						.selectAll("p")
+							.data(data)
+
+					p.enter().append("p").text((d) => d).transition().duration(500).style("color", "lime").ease(d3.easeCubic)
+					p.exit().transition().duration(500).style("opacity", 0).ease(d3.easeCubic).remove()
+					p.interrupt().style("color", "black").text((d) => d)
+
+			}
+
+			update(data)
+
+			d3.timeout(() => update([1,2,3,4,5]), 1000)
+			d3.timeout(() => update([1,2,3,4,5,6]), 2000)
+			d3.timeout(() => update([1,2,3,4,5,6,7]), 3000)
+			d3.timeout(() => update([1,2,3,4,5,6]), 4000)
+
+
+		*/
 
 		let playground = (<div>Loading playground</div>)
 
@@ -39,7 +58,7 @@ class SlideBinding  extends React.Component {
 		}
 		return (
 			<Box>
-					<h1>DOM manipulation</h1>
+					<h1>Virtual Reality</h1>
 					<div className="component-documentation">
 					  { playground }
 		      </div>
@@ -48,4 +67,4 @@ class SlideBinding  extends React.Component {
 		);
 	}
 }
-export default withRouter(SlideBinding);
+export default withRouter(SlideNext);

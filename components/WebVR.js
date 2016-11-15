@@ -8,9 +8,16 @@ import GamepadControls from "aframe-gamepad-controls";
 if(typeof AFRAME != "undefined"){
   var coordinates = AFRAME.utils.coordinates;
 
-  AFRAME.registerComponent('gamepad-controls', GamepadControls);
-  require('aframe-text-component');
-  require('aframe-bmfont-text-component');
+  if(!'gamepad-controls' in AFRAME.components)
+    AFRAME.registerComponent('gamepad-controls', GamepadControls);
+
+  if(!'text' in AFRAME.components)
+    require('aframe-text-component');
+
+  if(!'bmfont-text' in AFRAME.components)
+    require('aframe-bmfont-text-component');
+
+  if(!'line' in AFRAME.components)
   AFRAME.registerComponent('line', {
     schema: {
       color: { default: '#333' },
@@ -233,7 +240,7 @@ class WebVR  extends React.Component {
             </a-entity>
 
           </a-entity>
-          <a-sky src="room_reception.jpg" />
+          <a-sky src="/room_reception.jpg" />
 					<a-entity id="camera" camera="userHeight: 1.6" position="0 0 0" gamepad-controls="flyEnabled: true" look-controls wasd-controls="fly: true">
 						<a-entity position="0 0 -1"
 			                geometry="primitive: ring; radiusOuter: 0.03;

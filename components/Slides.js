@@ -17,7 +17,7 @@ import { RouteTransition, presets } from 'react-router-transition';
 
 class Slides  extends React.Component {
 	carousel = null
-	slides = ['cover', 'tweet', 'd3-selection']
+	slides = ['cover', 'tweet', 'topic', 'd3-selection', 'd3-selection-data-binding', 'shapes', 'the-force', 'next']
 	currentSlide = ""
 	goToSlide = (name) => {
 		return () => {
@@ -97,8 +97,12 @@ class Slides  extends React.Component {
 						<a onClick={this.goToSlide('')}>Home</a>
 						<a onClick={this.goToSlide('cover')}>Cover</a>
 						<a onClick={this.goToSlide('tweet')}>Tweet</a>
+						<a onClick={this.goToSlide('topic')}>Topic</a>
 						<a onClick={this.goToSlide('d3-selection')}>DOM Manipulation</a>
-						<a onClick={this.goToSlide('1')}>Slide 1</a>
+						<a onClick={this.goToSlide('d3-selection-data-binding')}>Hello Data</a>
+						<a onClick={this.goToSlide('shapes')}>Let's draw</a>
+						<a onClick={this.goToSlide('the-force')}>The force</a>
+						<a onClick={this.goToSlide('next')}>Next</a>
 					</Menu>
 					<RouteTransition
 				    pathname={this.props.location.pathname}

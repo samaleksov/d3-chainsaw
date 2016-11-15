@@ -84,6 +84,7 @@ app.use((req, res, next) => {
           <div id="root"><div>${markup}</div></div>
           <script type="text/javascript" src="/aframe.js" charset="utf-8"></script>
           <script type="text/javascript" src="/babel.js" charset="utf-8"></script>
+          <script type="text/javascript" src="/polyfill.js" charset="utf-8"></script>
 					<script type="text/javascript" src="/vendor.bundle.js" charset="utf-8"></script>
 					<script type="text/javascript" src="/app.bundle.js" charset="utf-8"></script>
         </body>

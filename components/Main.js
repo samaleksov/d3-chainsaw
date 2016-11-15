@@ -39,10 +39,10 @@ class Main  extends React.Component {
 			},
 			{
 				id: 4,
-				title: "D3 Graph",
-				description: "Notify graph changes",
+				title: "The Force",
+				description: "Use it",
 				color: "neutral-1",
-				link: "/"
+				link: "/force1"
 			},
 			{
 				id: 5,
@@ -53,10 +53,10 @@ class Main  extends React.Component {
 			},
 			{
 				id: 7,
-				title: "Scaleout",
-				description: "SignalR with SQL Server",
+				title: "Data Binding",
+				description: "Join data with elements",
 				color: "warning",
-				link: "/scalability"
+				link: "/d3-selection-data-binding"
 			},
 			{
 				id: 8,
