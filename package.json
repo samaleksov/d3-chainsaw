@@ -14,11 +14,13 @@
   "dependencies": {
     "aframe": "^0.3.2",
     "aframe-gamepad-controls": "^0.5.0",
+    "babel-standalone": "^6.18.2",
     "d3": "^4.3.0",
     "express": "^4.13.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0",
+    "react-router-transition": "0.0.6",
     "redux": "^3.5.2"
   },
   "devDependencies": {
@@ -43,6 +45,7 @@
     "es6-module-loader": "^0.17.11",
     "expose": "^0.1.4",
     "expose-loader": "^0.7.1",
+    "fs": "0.0.1-security",
     "grommet": "^1.0.0",
     "history": "^2.1.1",
     "intl": "^1.0.0",
@@ -63,6 +66,7 @@
     "inuit-shared": "~0.1.5",
     "isomorphic-style-loader": "^1.1.0",
     "moment": "^2.15.1",
+    "net": "^1.0.2",
     "node-sass": "^3.10.1",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^3.0.0-beta.6",

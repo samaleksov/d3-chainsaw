@@ -8,25 +8,27 @@ module.exports = {
        'react', 'react-dom'
       ]
     },
+    node: {
+        fs: 'empty',
+        net: 'empty',
+        module: 'empty',
+    },
     output: {
         path: __dirname + "/Scripts/dist",
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        publicPath: "/"
     },
     resolve: {
-    		extensions: ['.js', '.scss', '.css']
+    		extensions: ['.js', '.scss', '.css', ".json"]
     },
     module: {
         loaders: [
             {
-                loader: ['react-hot-loader/webpack','babel-loader'],
+                loader: ['babel-loader'],
                 test: /\.js/,
                 exclude: /(node_modules|bower_components)/
             },
-            {
-                loader: ['babel-loader'],
-                test: /\.example/,
-                exclude: /(node_modules|bower_components)/
-            },
+            { test: /\.json$/, loader: 'json-loader' },
             {
                 test: /\.scss$/,
                 loader: 'style-loader!css-loader!sass-loader?outputStyle=compressed'
@@ -63,6 +65,7 @@ module.exports = {
          }
        })
     ],
+    cache: true,
     stats: {
         // Nice colored output
         colors: true

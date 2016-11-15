@@ -37,19 +37,55 @@ app.use((req, res, next) => {
           <meta charset="utf-8"/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
           <meta name="apple-mobile-web-app-capable" content="yes">
+
+          <link rel="stylesheet" href="http://facebook.github.io/react/css/syntax.css">
+          <link rel="stylesheet" href="http://facebook.github.io/react/css/codemirror.css">
+          <link rel="stylesheet" href="http://facebook.github.io/react/css/react.css">
+
+          <style type="text/css">${[...css].join('')}</style>
           <style>
             html, body, #root { height: 100%; } a { text-decoration: none !important; }
             .a-canvas { width: 100% !important;height: 100% }
+            .playgroundCode {
+              width: initial;
+              max-width: initial;
+              display: flex;
+              flex: 1;
+            }
+            .playground {
+              display: flex;
+              flex: 1;
+            }
+            .playgroundPreview {
+              display: flex;
+              flex: 1;
+              width: initial;
+            }
+            .playgroundPreview div {
+              display: flex;
+              flex: 1;
+            }
+            .playgroundStage {
+              flex: 1;
+            }
+            .CodeMirror {
+              height: 80vh;
+            }
+            p.big.imeanit.really {
+              font-size: 40px;
+            }
+
+            p[not-so=big].big.imeanit.really {
+              font-size: 32px;
+            }
           </style>
-          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.css"/>
-          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/monokai.min.css"/>
-          <style type="text/css">${[...css].join('')}</style>
         </head>
         <body class="loading">
           <div id="root"><div>${markup}</div></div>
           <script type="text/javascript" src="/aframe.js" charset="utf-8"></script>
-					<script type="text/javascript" src="vendor.bundle.js" charset="utf-8"></script>
-					<script type="text/javascript" src="app.bundle.js" charset="utf-8"></script>
+          <script type="text/javascript" src="/babel.js" charset="utf-8"></script>
+					<script type="text/javascript" src="/vendor.bundle.js" charset="utf-8"></script>
+					<script type="text/javascript" src="/app.bundle.js" charset="utf-8"></script>
         </body>
       </html>`
     ].join('');

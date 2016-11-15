@@ -11,7 +11,7 @@ if (typeof System === 'undefined') {
 }
 
 function errorLoading(err) {
-  console.error('Dynamic page loading failed', err);
+  console.error('Dynamic page loading failed', err, err.stack);
 }
 
 function loadRoute(cb) {
@@ -51,7 +51,33 @@ export default {
 		 path: '/slides',
 		 getComponent(location, cb) {
 		 	System.import( "../components/Slides").then(loadRoute(cb)).catch(errorLoading);
-		 }
+		},
+		 childRoutes: [
+		 		{
+		 			path: '/slides/1',
+		 			getComponent(location, cb) {
+		        System.import( "../components/Slide1").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/d3-selection',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideSelection1").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/tweet',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideTweet").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	},
+				{
+		 			path: '/slides/cover',
+		 			getComponent(location, cb) {
+		        System.import( "../components/SlideCover").then(loadRoute(cb)).catch(errorLoading);
+	       	}
+		 	 	}
+	 	 ]
 	 },
 	 {
 		 path: '/scalability',
@@ -60,9 +86,9 @@ export default {
 		 }
 	 },
 	 {
-		 path: '/sqldependency',
+		 path: '/d3-selection',
 		 getComponent(location, cb) {
-		 	System.import( "../components/SQLDependency").then(loadRoute(cb)).catch(errorLoading);
+		 	System.import( "../components/D3Selection").then(loadRoute(cb)).catch(errorLoading);
 		 }
 	 },
 	 {

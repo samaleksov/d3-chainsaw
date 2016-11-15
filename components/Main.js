@@ -60,10 +60,10 @@ class Main  extends React.Component {
 			},
 			{
 				id: 8,
-				title: "SQLDependency",
-				description: "Use SQLDependency to listen for live data changes",
+				title: "D3 Selection",
+				description: "Selections allow powerful data-driven transformation of the DOM",
 				color: "grey-3-a",
-				link: "/sqldependency"
+				link: "/d3-selection"
 			},
 			{
 				id: 6,
