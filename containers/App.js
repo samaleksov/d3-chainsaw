@@ -44,7 +44,7 @@ class App extends React.Component {
           <Box flex="grow">
             {childrenWithProps}
           </Box>
-          <div style={{ visibility: !headerAndFooter ? "visible" : "hidden"}}>
+          <div style={{ visibility: !headerAndFooter ? "visible" : "hidden",  display: !headerAndFooter ? "block" : "none"}}>
             <Footer justify="between" colorIndex="grey-1" size="large" primary={true} pad={{"horizontal": "medium", "vertical" : "medium"}}>
             </Footer>
           </div>

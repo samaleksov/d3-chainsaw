@@ -17,7 +17,7 @@ class SlideCover  extends React.Component {
               Sam Aleksov
             </h1>
             <h3 style={{color: "#00adef"}}>
-              @samaleksov | samuil_aleksov@epam.com
+              @samaleksov | fb.me/SamAleksov | samuil_aleksov@epam.com
             </h3>
           </span>
         </Hero>

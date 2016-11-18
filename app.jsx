@@ -34,7 +34,7 @@ app.use((req, res, next) => {
       `<!DOCTYPE html>
       <html>
         <head>
-          <title>Tech Talks - Advanced Data Visualization With D3.js</title>
+          <title>EPAM - Advanced Data Visualization With D3.js</title>
           <meta charset="utf-8"/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
           <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,7 +70,7 @@ app.use((req, res, next) => {
               flex: 1;
             }
             .CodeMirror {
-              height: 80vh;
+              height: 75vh;
             }
             p.big.imeanit.really {
               font-size: 40px;
@@ -79,6 +79,15 @@ app.use((req, res, next) => {
             p[not-so=big].big.imeanit.really {
               font-size: 32px;
             }
+
+            .slidesContainer > div {
+              flex: 1;
+              display: flex;
+            }
+
+            .slidesContainer > div > div {
+              flex: 1;
+            }
           </style>
         </head>
         <body class="loading">
@@ -86,7 +95,6 @@ app.use((req, res, next) => {
           <script type="text/javascript" src="/aframe.js" charset="utf-8"></script>
           <script type="text/javascript" src="/babel.js" charset="utf-8"></script>
           <script type="text/javascript" src="/polyfill.js" charset="utf-8"></script>
-          <script type="text/javascript" src="/vendor.bundle.js" charset="utf-8"></script>
           <script type="text/javascript" src="/app.bundle.js" charset="utf-8"></script>
         </body>
       </html>`,

@@ -25,10 +25,10 @@ class Main  extends React.Component {
       },
       {
         id: 2,
-        title: "Stock Ticker",
-        description: "Use SQL Dependency to get notified about stock price changes",
+        title: "Examples",
+        description: "It's up to your immagination!",
         color: "neutral-2",
-        link: "/stock-tickers"
+        link: "/slides/examples"
       },
       {
         id: 3,
@@ -43,6 +43,13 @@ class Main  extends React.Component {
         description: "Use it",
         color: "neutral-1",
         link: "/force1"
+      },
+      {
+        id: 9,
+        title: "The Force",
+        description: "Links",
+        color: "neutral-4-a",
+        link: "/force2"
       },
       {
         id: 5,
@@ -66,11 +73,39 @@ class Main  extends React.Component {
         link: "/d3-selection"
       },
       {
+        id: 10,
+        title: "Axis",
+        description: "Human readable axis",
+        color: "grey-3-a",
+        link: "/api-axis"
+      },
+      {
+        id: 11,
+        title: "Arrays",
+        description: "Search, transform, stats",
+        color: "grey-3-a",
+        link: "/api-arrays"
+      },
+      {
+        id: 13,
+        title: "Colors",
+        description: "For a better world",
+        color: "grey-3-a",
+        link: "/api-colors"
+      },
+      {
+        id: 12,
+        title: "Scales",
+        description: "Abstract your visualization",
+        color: "grey-3-a",
+        link: "/api-scales"
+      },
+      {
         id: 6,
         title: "Slides",
         description: "The boring stuff",
         color: "neutral-4-a",
-        link: "slides"
+        link: "/slides/cover"
       }
     ]
   }

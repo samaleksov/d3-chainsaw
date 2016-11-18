@@ -1,0 +1,146 @@
+import React from "react"
+import { withRouter } from 'react-router'
+import Hero from 'grommet/components/Hero';
+import Box from 'grommet/components/Box';
+import Image from 'grommet/components/Image';
+
+class SlideTable  extends React.Component {
+  render () {
+    return (
+      <Box>
+      <table style={{ width: "100%" }}>
+        <thead>
+          <tr>
+            <th>Stat</th>
+            <th>Year</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><h1>Number of people who drowned by falling into a pool</h1></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>1999</td>
+            <td>110</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2000</td>
+            <td>101</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2001</td>
+            <td>101</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2002</td>
+            <td>99</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2003</td>
+            <td>85</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2004</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2005</td>
+            <td>96</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2006</td>
+            <td>97</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2007</td>
+            <td>125</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2008</td>
+            <td>96</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2009</td>
+            <td>103</td>
+          </tr>
+          <tr>
+            <td><h1>Films Nicolas Cage appeared in</h1></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>1999</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2000</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2001</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2002</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2003</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2004</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2005</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2006</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2007</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2008</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2009</td>
+            <td>4</td>
+          </tr>
+        </tbody>
+        </table>
+      </Box>
+    );
+  }
+}
+export default withRouter(SlideTable);

@@ -10,8 +10,11 @@ class SlideTweet  extends React.Component {
       <Box>
         <Hero colorIndex="#f2f3f4">
           <h1 style={{color: "#e74e50"}}>
-            #jstalks
+            #jstalks #notables #d3js
           </h1>
+					<h1 style={{color: "#00adef"}}>
+						@samaleksov
+					</h1>
         </Hero>
       </Box>
     );

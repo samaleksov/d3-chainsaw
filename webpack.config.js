@@ -1,13 +1,10 @@
 const webpack = require('webpack');
-
+const path = require('path');
 const PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: {
-    app: ['./client.jsx', 'webpack-hot-middleware/client'],
-    vendor: [
-      'react', 'react-dom',
-    ],
+    app: ['./client.jsx', 'webpack-hot-middleware/client']
   },
   node: {
     fs: 'empty',
@@ -15,17 +12,21 @@ module.exports = {
     module: 'empty',
   },
   output: {
-    path: `${__dirname}/Scripts/dist`,
+    path: `${__dirname}/dist`,
     filename: '[name].bundle.js',
     publicPath: '/',
   },
   resolve: {
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom')
+    },
     extensions: ['.js', '.scss', '.css', '.json'],
   },
   module: {
     loaders: [
       {
-        loader: ['babel-loader'],
+        loader: ['react-hot-loader', 'babel-loader'],
         test: /\.js/,
         exclude: /(node_modules|bower_components)/,
       },
@@ -37,6 +38,11 @@ module.exports = {
     ],
   },
   plugins: PROD ? [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -66,7 +72,6 @@ module.exports = {
         },
       }),
     ],
-  cache: true,
   stats: {
         // Nice colored output
     colors: true,

@@ -34,7 +34,7 @@ class ForceDirectedGraph  extends React.Component {
 
     zoom.translateBy(svg, width/2, height/2)
 
-    d3.json("miserables.json", function(error, graph) {
+    d3.json("/miserables.json", function(error, graph) {
       if (error) throw error
       var link = group.append("g")
       .attr("class", "links")

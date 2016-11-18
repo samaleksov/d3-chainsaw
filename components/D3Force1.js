@@ -5,22 +5,6 @@ import * as d3 from "d3"
 const color = d3.scaleOrdinal(d3.schemeCategory20)
 
 class D3Force1  extends React.Component {
-  dragstarted = (d) => {
-    if (!d3.event.active) this.simulation.alphaTarget(0.3).restart()
-    d.fx = d.x
-    d.fy = d.y
-  }
-
-  dragged(d) {
-    d.fx = d3.event.x
-    d.fy = d3.event.y
-  }
-
-  dragended = (d) => {
-    if (!d3.event.active) simulation.alphaTarget(0)
-    d.fx = null
-    d.fy = null
-  }
   links = []
   nodes = [{}]
   addOne = (coordinates) => {
@@ -33,11 +17,6 @@ class D3Force1  extends React.Component {
     .attr("stroke", "#fff")
     .attr("stroke-width", "1.5px")
     .attr("fill", function(d) { return color(d.group) })
-
-    .call(d3.drag()
-    .on("start", this.dragstarted)
-    .on("drag", this.dragged)
-    .on("end", this.dragended))
 
     this.node = this.node.merge(this.nodeEnter)
 
@@ -85,10 +64,6 @@ class D3Force1  extends React.Component {
     .attr("stroke", "#fff")
     .attr("stroke-width", "1.5px")
     .attr("fill", function(d) { return color(d.group) })
-    .call(d3.drag()
-    .on("start", this.dragstarted)
-    .on("drag", this.dragged)
-    .on("end", this.dragended))
 
     this.node.append("title")
     .text(function(d) { return d.id; })

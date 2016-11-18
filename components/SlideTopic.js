@@ -8,7 +8,7 @@ class SlideTopic  extends React.Component {
   render () {
     return (
       <Box>
-        <Hero backgroundImage="/iStock_000065756809_Large_2.jpg">
+        <Hero backgroundImage="/iStock_85558501_web.jpg">
           <h1>
             Advanced Data Visualization With D3.js
           </h1>
