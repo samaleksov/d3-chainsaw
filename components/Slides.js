@@ -16,9 +16,12 @@ import { RouteTransition, presets } from 'react-router-transition';
 
 class Slides  extends React.Component {
   carousel = null
-  slides = ['cover', 'tweet', 'topic', 'dragons','tables', 'no-tables', 'shire', 'excel', 'matrix', 'gandalf' , 'magic', 'd3-selection', 'd3-selection-data-binding', 'arrays', 'collections', 'hierarchies', 'scales',
+  slides = ['cover', 'tweet', 'topic', 'dragons','tables', 'no-tables',
+          'shire', 'excel', 'matrix', 'gandalf' , 'magic',
+          'd3-selection', 'd3-selection-data-binding', 'arrays', 'scales',
           'colors', 'random', 'axis','requests',
-          'shapes', 'the-force', 'the-force2', 'examples', 'next', 'qa','save-the-date', 'thankyou']
+          'shapes', 'the-force', 'the-force2', 'examples', 'next',
+          'qa','save-the-date', 'thankyou']
 
   currentSlide = ""
   goToSlide = (name) => {
@@ -99,17 +102,14 @@ class Slides  extends React.Component {
 
       <Box flex={true} className="slidesContainer">
         <Menu inline={true} direction="row" size="small">
-          <a style={ this.currentSlide == '' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('')}>Home</a>
           <a style={ this.currentSlide == 'cover' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('cover')}>Cover</a>
           <a style={ this.currentSlide == 'tweet' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('tweet')}>Tweet</a>
           <a style={ this.currentSlide == 'topic' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('topic')}>Topic</a>
           <a style={ this.currentSlide == 'tables' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('tables')}>Tables</a>
           <a style={ this.currentSlide == 'no-tables' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('no-tables')}>Notables</a>
-          <a style={ this.currentSlide == 'd3-selection' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('d3-selection')}>DOM Manipulation</a>
+          <a style={ this.currentSlide == 'd3-selection' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('d3-selection')}>DOM</a>
           <a style={ this.currentSlide == 'd3-selection-data-binding' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('d3-selection-data-binding')}>Hello Data</a>
           <a style={ this.currentSlide == 'arrays' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('arrays')}>Arrays</a>
-          <a style={ this.currentSlide == 'collections' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('collections')}>Collections</a>
-          <a style={ this.currentSlide == 'hierarchies' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('hierarchies')}>Hierarchies</a>
           <a style={ this.currentSlide == 'scales' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('scales')}>Scales</a>
           <a style={ this.currentSlide == 'colors' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('colors')}>Colors</a>
           <a style={ this.currentSlide == 'axis' ? {color: "#e74e50"} : { color: "#00adef"}} onClick={this.goToSlide('axis')}>Axis</a>
