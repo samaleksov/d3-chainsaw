@@ -211,6 +211,12 @@ export default {
           }
         },
         {
+          path: '/slides/table-tables',
+          getComponent(location, cb) {
+            System.import( "../components/SlideTableTables").then(loadRoute(cb)).catch(errorLoading);
+          }
+        },
+        {
           path: '/slides/matrix',
           getComponent(location, cb) {
             System.import( "../components/SlideMatrix").then(loadRoute(cb)).catch(errorLoading);

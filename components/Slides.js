@@ -16,11 +16,12 @@ import { RouteTransition, presets } from 'react-router-transition';
 
 class Slides  extends React.Component {
   carousel = null
-  slides = ['cover', 'tweet', 'topic', 'dragons','tables', 'no-tables',
-          'shire', 'excel', 'matrix', 'gandalf' , 'magic',
-          'd3-selection', 'd3-selection-data-binding', 'arrays', 'scales',
-          'colors', 'random', 'axis','requests',
-          'shapes', 'the-force', 'the-force2', 'examples', 'next',
+  slides = [ 'cover', 'tweet', 'topic', 'table-tables', 'dragons', 'excel', 'tables', 'no-tables',
+          'd3-selection', 'd3-selection-data-binding',
+                  'shire',
+                  'arrays', 'scales', 'magic',
+          'colors',  'axis', 'requests', 'random', 
+          'shapes', 'matrix', 'the-force', 'the-force2', 'graphs', 'examples','gandalf', 'next',
           'qa','save-the-date', 'thankyou']
 
   currentSlide = ""

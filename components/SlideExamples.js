@@ -22,7 +22,7 @@ class SlideExamples  extends React.Component {
         <img style={{ maxHeight: "260px", maxWidth: "300px"}} src="/examples/viz_demo.gif" />
         <img style={{ maxHeight: "260px", maxWidth: "300px"}} src="/examples/EventDrops.gif" />
         <a style={{ display: "inline-block", minHeight: "260px", minWidth: "300px"}} href="https://github.com/d3/d3/wiki/Gallery" target="_blank">
-          <Box pad="small"  direction="row" justify="center"  colorIndex="neutral-1" flex="true" align="center" alignContent="between" style={{ minHeight: "260px", minWidth: "300px"}}>
+          <Box pad="small"  direction="row" justify="center"  colorIndex="neutral-1" flex={true} align="center" alignContent="between" style={{ minHeight: "260px", minWidth: "300px"}}>
             <h1>D3 Gallery</h1>
           </Box>
         </a>

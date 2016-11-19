@@ -12,16 +12,10 @@ class Main  extends React.Component {
     tiles: [
       {
         id: 1,
-        carousel: true,
+        title: "Force Directed Graph",
+        description: "Using d3.forceSimulation",
         color: "neutral-1",
-        items: [
-          {
-            id: 1,
-            title: "Force Directed Graph",
-            description: "Using d3.forceSimulation",
-            link: '/force-directed-graph'
-          }
-        ]
+        link: '/force-directed-graph'
       },
       {
         id: 2,
@@ -69,28 +63,28 @@ class Main  extends React.Component {
         id: 8,
         title: "D3 Selection",
         description: "Selections allow powerful data-driven transformation of the DOM",
-        color: "grey-3-a",
+        color: "neutral-1",
         link: "/d3-selection"
       },
       {
         id: 10,
         title: "Axis",
         description: "Human readable axis",
-        color: "grey-3-a",
+        color: "neutral-2",
         link: "/api-axis"
       },
       {
         id: 11,
         title: "Arrays",
         description: "Search, transform, stats",
-        color: "grey-3-a",
+        color: "neutral-3",
         link: "/api-arrays"
       },
       {
         id: 13,
         title: "Colors",
         description: "For a better world",
-        color: "grey-3-a",
+        color: "neutral-1",
         link: "/api-colors"
       },
       {
