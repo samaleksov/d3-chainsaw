@@ -2,6 +2,10 @@
 
 D3.js examples with React, A-FRAME and WebVR.
 
+# Data Viz has a special place in Virtual Reality
+
+![D3 and WebVR with A-RAME](public/webvr.png?raw=true "In action")
+
 ### Installation
 
 D3 Chainsaw requires [Node.js](https://nodejs.org/) v4+ to run.
