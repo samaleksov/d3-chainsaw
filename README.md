@@ -6,6 +6,10 @@ D3.js examples with React, A-FRAME and WebVR.
 
 ![D3 and WebVR with A-RAME](public/webvr.png?raw=true "In action")
 
+### Images
+
+Please note that images weren't included due to different or unclear licensing :(
+
 ### Installation
 
 D3 Chainsaw requires [Node.js](https://nodejs.org/) v4+ to run.
